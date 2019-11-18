@@ -47,18 +47,18 @@ i18n.load({
 
 i18n.setLocale( "en" )
 
-print(i18n.translate('welcome'));
-print(i18n.translate('welcome', { locale = 'en' ));
-print(i18n.translate('welcome', { locale = 'fr' ));
+print(i18n.trans('welcome'));
+print(i18n.trans('welcome', { locale = 'en' ));
+print(i18n.trans('welcome', { locale = 'fr' ));
 
-print(i18n.translate('invalid_config'));
-print(i18n.translate('invalid_config', { path = 'config.json' ));
-print(i18n.translate('invalid_config', { path = 'config.json' ));
+print(i18n.trans('invalid_config'));
+print(i18n.trans('invalid_config', { path = 'config.json' ));
+print(i18n.trans('invalid_config', { path = 'config.json' ));
 
 function OnPlayerJoin( player )
-    AddPlayerChat( player, i18n.trans( 'connected', { name = GetPlayerName(player),locale = GetPlayerLocale(player) } ) )
+    AddPlayerChat( player, i18n.trans( 'connected', { name = GetPlayerName(player), locale = GetPlayerLocale(player) } ) )
 end
-AddEvent( 'OnPlayerSteamAuth', OnPlayerSteamAuth )
+AddEvent( 'OnPlayerJoin', OnPlayerJoin )
 ```
 
 
