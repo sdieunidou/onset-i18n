@@ -1,0 +1,13 @@
+{
+    "author": "mTxServ",
+    "version": "1.0",
+    "server_scripts": [
+        "init.lua",
+        "interpolate.lua",
+        "plural.lua",
+        "variants.lua",
+        "version.lua"
+    ],
+    "client_scripts": [],
+    "files": []
+}
