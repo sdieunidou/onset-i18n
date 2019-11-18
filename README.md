@@ -41,9 +41,9 @@ i18n.load({
 })
 
 
--- i18n.loadFile( 'packages/yourpackage/en.lua' ) -- load English language file
--- i18n.loadFile( 'packages/yourpackage/de.lua' ) -- load German language file
--- i18n.loadFile( 'packages/yourpackage/fr.lua' ) -- load French language file
+-- i18n.loadFile( 'packages/yourpackage/i18n/en.lua' ) -- load English language file
+-- i18n.loadFile( 'packages/yourpackage/i18n/de.lua' ) -- load German language file
+-- i18n.loadFile( 'packages/yourpackage/i18n/fr.lua' ) -- load French language file
 
 i18n.setFallbackLocale( "en" )
 i18n.setLocale( "en" )
@@ -136,9 +136,9 @@ It might be a good idea to store each translation in a different file. This is s
 
 ``` lua
 …
-i18n.loadFile('path/to/your/project/i18n/de.lua') -- German translation
-i18n.loadFile('path/to/your/project/i18n/en.lua') -- English translation
-i18n.loadFile('path/to/your/project/i18n/fr.lua') -- French translation
+i18n.loadFile('packages/yourpackage/i18n/de.lua') -- German translation
+i18n.loadFile('packages/yourpackage/i18n/en.lua') -- English translation
+i18n.loadFile('packages/yourpackage/i18n/fr.lua') -- French translation
 …
 ```
 
