@@ -34,29 +34,30 @@ i18n.load({
 	  connected = 'Welcome %{name}!',
   },
   fr = {
-    welcome = 'Vous n\'êtes pas autorisé à rejoindre ce serveur!',
+	  welcome = 'Vous n\'êtes pas autorisé à rejoindre ce serveur!',
 	  invalid_config = 'Votre fichier %{path} ne respecte pas le format JSON. Corrigez la configuration!',
 	  connected = 'Bienvenue %{name}!',
   }
 })
 
 
--- i18n.loadFile('packages/yourpackage/en.lua') -- load English language file
--- i18n.loadFile('packages/yourpackage/de.lua') -- load German language file
--- i18n.loadFile('packages/yourpackage/fr.lua') -- load French language file
+-- i18n.loadFile( 'packages/yourpackage/en.lua' ) -- load English language file
+-- i18n.loadFile( 'packages/yourpackage/de.lua' ) -- load German language file
+-- i18n.loadFile( 'packages/yourpackage/fr.lua' ) -- load French language file
 
+i18n.setFallbackLocale( en )
 i18n.setLocale( "en" )
 
-print(i18n.trans('welcome'));
-print(i18n.trans('welcome', { locale = 'en' ));
-print(i18n.trans('welcome', { locale = 'fr' ));
+print( i18n.trans( 'welcome') );
+print( i18n.trans( 'welcome', { locale = 'en' ) );
+print( i18n.trans( 'welcome', { locale = 'fr' ) );
 
-print(i18n.trans('invalid_config'));
-print(i18n.trans('invalid_config', { path = 'config.json' ));
-print(i18n.trans('invalid_config', { path = 'config.json' ));
+print( i18n.trans( 'invalid_config' ));
+print( i18n.trans( 'invalid_config', { path = 'config.json' ) );
+print( i18n.trans( 'invalid_config', { path = 'config.json' ) );
 
 function OnPlayerJoin( player )
-    AddPlayerChat( player, i18n.trans( 'connected', { name = GetPlayerName(player), locale = GetPlayerLocale(player) } ) )
+    AddPlayerChat( player, i18n.trans( 'connected', { name = GetPlayerName( player ), locale = GetPlayerLocale( player ) } ) )
 end
 AddEvent( 'OnPlayerJoin', OnPlayerJoin )
 ```
