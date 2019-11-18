@@ -45,7 +45,7 @@ i18n.load({
 -- i18n.loadFile( 'packages/yourpackage/de.lua' ) -- load German language file
 -- i18n.loadFile( 'packages/yourpackage/fr.lua' ) -- load French language file
 
-i18n.setFallbackLocale( en )
+i18n.setFallbackLocale( "en" )
 i18n.setLocale( "en" )
 
 print( i18n.trans( 'welcome') );
