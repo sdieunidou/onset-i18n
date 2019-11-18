@@ -40,6 +40,11 @@ i18n.load({
   }
 })
 
+
+-- i18n.loadFile('packages/yourpackage/en.lua') -- load English language file
+-- i18n.loadFile('packages/yourpackage/de.lua') -- load German language file
+-- i18n.loadFile('packages/yourpackage/fr.lua') -- load French language file
+
 i18n.setLocale( "en" )
 
 print(i18n.translate('welcome'));
@@ -55,6 +60,72 @@ function OnPlayerJoin( player )
 end
 AddEvent( 'OnPlayerSteamAuth', OnPlayerSteamAuth )
 ```
+
+
+Interpolation
+=============
+
+You can interpolate variables in 3 different ways:
+
+``` lua
+-- the most usual one
+i18n.set('variables', 'Interpolating variables: %{name} %{age}')
+i18n('variables', {name='john', 'age'=10}) -- Interpolating variables: john 10
+
+i18n.set('lua', 'Traditional Lua way: %d %s')
+i18n('lua', {1, 'message'}) -- Traditional Lua way: 1 message
+
+i18n.set('combined', 'Combined: %<name>.q %<age>.d %<age>.o')
+i18n('combined', {name='john', 'age'=10}) -- Combined: john 10 12k
+```
+
+
+
+Pluralization
+=============
+
+This lib implements the [unicode.org plural rules](http://cldr.unicode.org/index/cldr-spec/plural-rules). Just set the locale you want to use and it will deduce the appropiate pluralization rules:
+
+``` lua
+i18n = require 'i18n'
+
+i18n.load({
+  en = {
+    msg = {
+      one   = "one message",
+      other = "%{count} messages"
+    }
+  },
+  ru = {
+    msg = {
+      one   = "1 сообщение",
+      few   = "%{count} сообщения",
+      many  = "%{count} сообщений",
+      other = "%{count} сообщения"
+    }
+  }
+})
+
+i18n('msg', {count = 1}) -- one message
+i18n.setLocale('ru')
+i18n('msg', {count = 5}) -- 5 сообщений
+```
+
+The appropiate rule is chosen by finding the 'root' of the locale used: for example if the current locale is 'fr-CA', the 'fr' rules will be applied.
+
+If the provided functions are not enough (i.e. invented languages) it's possible to specify a custom pluralization function in the second parameter of setLocale. This function must return 'one', 'few', 'other', etc given a number.
+
+Fallbacks
+=========
+
+When a value is not found, the lib has several fallback mechanisms:
+
+* First, it will look in the current locale's parents. For example, if the locale was set to 'en-US' and the key 'msg' was not found there, it will be looked over in 'en'.
+* Second, if the value is not found in the locale ancestry, a 'fallback locale' (by default: 'en') can be used. If the fallback locale has any parents, they will be looked over too.
+* Third, if all the locales have failed, but there is a param called 'default' on the provided data, it will be used.
+* Otherwise the translation will return nil.
+
+The parents of a locale are found by splitting the locale by its hyphens. Other separation characters (spaces, underscores, etc) are not supported.
 
 #  Credits
 
