@@ -8,6 +8,20 @@ This package is an integration of the i18n libray made by kikito (https://github
 
 Add package in `onset/packages/i18n`, enable it in `server_config.json` and restart your Onset server.
 
+# Functions
+
+```
+AddFunctionExport( 'trans', i18n.translate )
+AddFunctionExport( 'getLocale', i18n.getLocale )
+AddFunctionExport( 'setLocale', i18n.setLocale )
+AddFunctionExport( 'getFallbackLocale', i18n.getFallbackLocale )
+AddFunctionExport( 'setFallbackLocale', i18n.setFallbackLocale )
+AddFunctionExport( 'load', i18n.load )
+AddFunctionExport( 'loadFile', i18n.loadFile )
+AddFunctionExport( 'reset', i18n.reset )
+AddFunctionExport( 'set', i18n.set )
+```
+
 # Usage
 
 ```
@@ -41,3 +55,8 @@ function OnPlayerJoin( player )
 end
 AddEvent( 'OnPlayerSteamAuth', OnPlayerSteamAuth )
 ```
+
+#  Credits
+
+* Onset Server Hosting: https://mtxserv.com/host-server/onset
+* Thanks to GCA: https://g-ca.fr/
