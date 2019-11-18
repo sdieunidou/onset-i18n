@@ -129,5 +129,6 @@ The parents of a locale are found by splitting the locale by its hyphens. Other 
 
 #  Credits
 
+* Thanks to kikito: https://github.com/kikito/i18n.lua
 * Onset Server Hosting: https://mtxserv.com/host-server/onset
 * Thanks to GCA: https://g-ca.fr/
