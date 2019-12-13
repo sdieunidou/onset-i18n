@@ -6,7 +6,7 @@ This package is an integration of the i18n libray made by kikito (https://github
 
 # Install
 
-Add package in `onset/packages/i18n`, enable it in `server_config.json` and restart your Onset server.
+Add package in `onset/packages/simplei18n`, enable it in `server_config.json` and restart your Onset server.
 
 # Functions
 
@@ -25,7 +25,7 @@ AddFunctionExport( 'set', i18n.set )
 # Usage
 
 ```
-local i18n = ImportPackage( 'i18n' ) or error('i18n package is missing (https://github.com/sdieunidou/onset-i18n)!')
+local i18n = ImportPackage( 'simplei18n' ) or error('simplei18n package is missing (https://github.com/sdieunidou/onset-i18n)!')
 
 i18n.load({
   en = {
@@ -88,7 +88,7 @@ Pluralization
 This lib implements the [unicode.org plural rules](http://cldr.unicode.org/index/cldr-spec/plural-rules). Just set the locale you want to use and it will deduce the appropiate pluralization rules:
 
 ``` lua
-i18n = require 'i18n'
+i18n = require 'simplei18n'
 
 i18n.load({
   en = {
